@@ -54,7 +54,7 @@ def get_one_guardian(guardian_id):
   return jsonify(person), 200
 
 
-@app.route('/guardians/delete/<guardian_id>', methods=['GET'])
+@app.route('/delete_guardian/<guardian_id>', methods=['GET'])
 def delete_guardian(guardian_id):
   res = guardian_tb.delete_one({ "_id": ObjectId(guardian_id) })
   if not res.acknowledged:
@@ -66,12 +66,24 @@ def delete_guardian(guardian_id):
 @app.route('/create_guardian', methods=['POST'])
 def create_guardian():
   document = request.get_json() # frontend ensures all fields exist
-  print("--", document)
   res = guardian_tb.insert_one(document)
   if not res.acknowledged:
     return jsonify({'message': 'unable to create'}), 404
   
   return jsonify({'message': 'Guardian has been created'}), 200
+
+
+@app.route('/update_guardian/<guardian_id>', methods=['POST'])
+def update_guardian(guardian_id):
+  updated_document = request.get_json()
+  res = guardian_tb.update_one({ "_id": ObjectId(guardian_id) }, { "$set": updated_document })
+  if not res.acknowledged:
+    return jsonify({'message': 'update invalid'}), 404
+  
+  return jsonify({'message': 'Guardian has been updated'}), 200
+
+
+
 
 
 if __name__ == "__main__":
