@@ -1,0 +1,66 @@
+"""
+TO DOS
+
+NICE TO HAVES
+  - use blueprints to seperate and organize related routes
+"""
+
+from dotenv import load_dotenv
+from flask import Flask 
+import os
+import pymongo
+from pymongo import MongoClient
+import requests
+import certifi
+from flask import jsonify
+from bson import ObjectId
+
+load_dotenv()
+
+app = Flask(__name__)
+
+connection_string = f"mongodb+srv://A:{os.getenv('DB_PASSWORD')}@cluster0.xks5p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+client = MongoClient(connection_string, tlsCAFile=certifi.where())
+
+# connect with mongodb and set collection variables
+db = client["devfest"]
+guardian_tb = db["guardian"]
+recepient_tb = db["recepient"]
+prescription_tb = db["prescription"]
+call_log_tb = db["call_log"]
+
+""" routes for guardians """
+
+@app.route('/guardians', methods=['GET'])
+def get_all_guardians():
+  all_guardians = guardian_tb.find({ })
+  res = []
+
+  for guardian in all_guardians:
+    guardian["_id"] = str(guardian["_id"]) # convert BSON object into string
+    res.append(guardian)
+    print(guardian["_id"])
+  
+  return jsonify(res), 200
+
+@app.route('/guardians/<guardian_id>', methods=['GET'])
+def find_guardian(guardian_id):
+  person = guardian_tb.find_one({ "_id": ObjectId(guardian_id) })
+  if not person:
+    return jsonify({'message': 'Guardian not found'}), 404
+
+  person["_id"] = str(person["_id"])
+  return jsonify(person), 200
+
+  
+@app.route('/get_user', methods=['GET'])
+def get_a_guardian():
+  pass 
+
+  
+
+
+
+
+if __name__ == "__main__":
+  app.run(debug=True)
