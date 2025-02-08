@@ -41,3 +41,32 @@ guardiantb.update_one({ "name": "chow" }, { "$set": { "name": "raza chow" } })
 """ can count # of documents for specific query """
 total_documents = guardiantb.count_documents({  })
 print(total_documents)
+
+### TESTING ONLY; DELETE LATER
+print()
+print("hello")
+print(guardiantb.count_documents({}))
+for x in guardiantb.find():
+  print(x)
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+@app.route("/", methods=["GET"])
+def hello_world():
+  print("hi")
+  return "<p>Hello, World!</p>"
+
+@app.route("/", methods=["POST"])
+def hello_world_post():
+  print("POST gang")
+  print(request.json.get("hi"))
+  guardiantb.insert_one(request.json)
+  print("Number of documents in guardiantb: " + str(guardiantb.count_documents({})))
+  for x in guardiantb.find():
+    print(x)
+  print()
+  return "<p>Hello, World!</p>"
