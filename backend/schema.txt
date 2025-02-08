@@ -1,0 +1,47 @@
+# guardian
+{
+  _id: ObjectId,
+  "name": string,
+  "email": string@gmail.com,
+  "password": HASH,
+  "phone": int,
+  "recepients": [ObjectId],
+}
+
+# recepient
+{
+  _id: ObjectId,
+  "guardian_id": ObjectId
+  "name": string,
+  "phone": int,
+  "language": string,
+  "timezone": "",
+  "prescriptions": [ObjectId],
+  "call_logs": [ObjectId],
+}
+
+# prescription
+{
+  _id: ObjectId,
+  "recepient_id": ObjectId,
+  "medication": string,
+  "dosage": "",
+  "instructions": "",
+  /* CAN make more epansive, monthly, daily, yearly presecriptions */
+  "schedule": [
+    "days": {
+      "time": ""
+    }
+  ]
+  "status": { active, paused, done }
+}
+
+# call logs 
+{
+  _id: ObjectId,
+  "recepient_id": ObjectId,
+  "prescription_id": ObjectId,
+  "status": { sucess, fail }
+  "call_duration": int
+  "recording": TWILIO.mp3
+}

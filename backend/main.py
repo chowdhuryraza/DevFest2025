@@ -38,7 +38,6 @@ guardiantb.delete_many( { "email": "ss7373@columbia.edu" })
 # set changes the field value
 guardiantb.update_one({ "name": "chow" }, { "$set": { "name": "raza chow" } })
 
-
 """ can count # of documents for specific query """
 total_documents = guardiantb.count_documents({  })
 print(total_documents)
