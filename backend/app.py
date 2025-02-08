@@ -14,6 +14,10 @@ import requests
 import certifi
 from flask import request, jsonify
 from bson import ObjectId
+from flask_cors import CORS
+
+from werkzeug.security import generate_password_hash
+from models import Guardian
 
 load_dotenv()
 
@@ -61,12 +65,35 @@ def delete_guardian(guardian_id):
 
 @app.route('/create_guardian', methods=['POST'])
 def create_guardian():
-  document = request.get_json() # frontend ensures all fields exist
+  # document = request.get_json() # frontend ensures all fields exist
+  # res = guardian_tb.insert_one(document)
+  # if not res.acknowledged:
+  #   return jsonify({'message': 'unable to create'}), 404
+  
+  # return jsonify({'message': 'Guardian has been created'}), 200
+  name = request.json.get("name")
+  email = request.json.get("email")
+  password = request.json.get("password")
+  phone = request.json.get("phone")
+
+  existing_guardian = guardian_tb.find_one({"email": email})
+  if existing_guardian:
+    return jsonify({'message': 'Guardian already exists'}), 400
+  
+  document = {
+      "name": name,
+      "email": email,
+      "password": generate_password_hash(password),
+      "phone": phone
+    }
+  
   res = guardian_tb.insert_one(document)
   if not res.acknowledged:
-    return jsonify({'message': 'unable to create'}), 404
+    return jsonify({'message': 'Unable to create guardian'}), 404
   
-  return jsonify({'message': 'Guardian has been created'}), 200
+  Guardian.create_user(guardian_tb, email, generate_password_hash(password), name, phone)
+  return jsonify({'message': 'Guardian created successfully'}), 201
+  
 
 @app.route('/update_guardian/<guardian_id>', methods=['POST'])
 def update_guardian(guardian_id):
