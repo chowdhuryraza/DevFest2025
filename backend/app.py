@@ -12,7 +12,7 @@ import pymongo
 from pymongo import MongoClient
 import requests
 import certifi
-from flask import jsonify
+from flask import request, jsonify
 from bson import ObjectId
 
 load_dotenv()
@@ -37,29 +37,41 @@ def get_all_guardians():
   res = []
 
   for guardian in all_guardians:
-    guardian["_id"] = str(guardian["_id"]) # convert BSON object into string
+    guardian["_id"] = str(guardian["_id"]) # convert BSON object into string for serialization
     res.append(guardian)
     print(guardian["_id"])
   
   return jsonify(res), 200
 
+
 @app.route('/guardians/<guardian_id>', methods=['GET'])
-def find_guardian(guardian_id):
+def get_one_guardian(guardian_id):
   person = guardian_tb.find_one({ "_id": ObjectId(guardian_id) })
   if not person:
     return jsonify({'message': 'Guardian not found'}), 404
 
-  person["_id"] = str(person["_id"])
+  person["_id"] = str(person["_id"]) 
   return jsonify(person), 200
 
+
+@app.route('/guardians/delete/<guardian_id>', methods=['GET'])
+def delete_guardian(guardian_id):
+  res = guardian_tb.delete_one({ "_id": ObjectId(guardian_id) })
+  if not res.acknowledged:
+    return jsonify({'message': 'Guardian not found'}), 404
   
-@app.route('/get_user', methods=['GET'])
-def get_a_guardian():
-  pass 
+  return jsonify({'message': 'Guardian has been deleted'}), 200
 
+
+@app.route('/create_guardian', methods=['POST'])
+def create_guardian():
+  document = request.get_json() # frontend ensures all fields exist
+  print("--", document)
+  res = guardian_tb.insert_one(document)
+  if not res.acknowledged:
+    return jsonify({'message': 'unable to create'}), 404
   
-
-
+  return jsonify({'message': 'Guardian has been created'}), 200
 
 
 if __name__ == "__main__":
