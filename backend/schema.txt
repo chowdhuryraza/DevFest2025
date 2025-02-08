@@ -1,4 +1,4 @@
-# guardian
+# guardians
 {
   _id: ObjectId,
   "name": string,
@@ -8,7 +8,7 @@
   "recepients": [ObjectId],
 }
 
-# recepient
+# recipients
 {
   _id: ObjectId,
   "guardian_id": ObjectId
@@ -20,7 +20,7 @@
   "call_logs": [ObjectId],
 }
 
-# prescription
+# prescriptions
 {
   _id: ObjectId,
   "recepient_id": ObjectId,
