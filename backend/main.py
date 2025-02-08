@@ -13,8 +13,8 @@ db = client["devfest"]
 guardiantb = db["guardian"]
 
 """ create/insert one post to db guardian collection """
-post = { "_id": 4, "name": "poopooo", "email": "hahaha@gmail.com" }
-guardiantb.insert_one(post)
+# post = { "_id": 4, "name": "poopooo", "email": "hahaha@gmail.com" }
+# guardiantb.insert_one(post)
 # insert_many(lists_of_posts)
 
 """ read/find posts by specifying attributes to search by, can be multiple """
