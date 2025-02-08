@@ -2,12 +2,11 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from pymongo import MongoClient
 from werkzeug.security import generate_password_hash
+from models import Guardian
 
 import os, certifi
 from dotenv import load_dotenv
 load_dotenv()
-
-from models import Guardian
 
 app = Flask(__name__)
 CORS(app)
@@ -39,8 +38,6 @@ def register():
     except ValueError:
         Guardian.create_user(guardian_tb, email, generate_password_hash(password), name, phone)
         return jsonify({'message': 'User registered successfully'}), 201
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
