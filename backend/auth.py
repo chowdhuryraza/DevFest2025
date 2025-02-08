@@ -7,7 +7,7 @@ import os, certifi
 from dotenv import load_dotenv
 load_dotenv()
 
-from models import User
+from models import Guardian
 
 app = Flask(__name__)
 CORS(app)
@@ -22,7 +22,7 @@ prescription_tb = db["prescription"]
 call_log_tb = db["call_log"]
 
 
-@app.route("/home")
+@app.route("/")
 def index():
     return "<p>Hello, World!</p>"
 
@@ -34,10 +34,12 @@ def register():
     phone = request.json.get("phone")
 
     try:
-        found_user = User(guardian_tb, email)
+        found_user = Guardian(guardian_tb, email)
         found_user.set_password(password)
     except ValueError:
-        User.create_user(guardian_tb, email, generate_password_hash(password), name, phone)
+        Guardian.create_user(guardian_tb, email, generate_password_hash(password), name, phone)
+        return jsonify({'message': 'User registered successfully'}), 201
+
 
 
 if __name__ == '__main__':
