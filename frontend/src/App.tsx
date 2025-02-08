@@ -2,9 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import SignUpForm from "./SignUpForm";
 
 function App() {
   const [count, setCount] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   // const onSubmit = async (e) => {
   const onSubmit = async () => {
@@ -16,7 +18,7 @@ function App() {
     //     email
     // }
     // const url = "http://127.0.0.1:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
-    const url = "http://127.0.0.1:5000/"
+    const url = "http://127.0.0.1:5000/create_guardian"
     const options = {
       method: "POST",
       headers: {
@@ -33,6 +35,20 @@ function App() {
     // } // else {
     //     updateCallback()
     // }
+  }
+
+  const openSignUpModal = () => {
+    if (!isModalOpen) setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    // setCurrentContact({})
+  }
+
+  const onUpdate = () => {
+    closeModal()
+    // fetchContacts()
   }
 
   return (
@@ -61,6 +77,15 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button onClick={openSignUpModal}>Sign Up</button>
+      {isModalOpen && <div className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={closeModal}>&times;</span>
+          <SignUpForm updateCallback={onUpdate} />
+          {/* <SignUpForm existingContact={currentContact} updateCallback={onUpdate} /> */}
+        </div>
+      </div>
+      }
     </>
   )
 }
