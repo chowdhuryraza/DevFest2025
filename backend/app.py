@@ -21,6 +21,10 @@ load_dotenv()
 
 app = Flask(__name__)
 
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
+
 connection_string = f"mongodb+srv://A:{os.getenv('DB_PASSWORD')}@cluster0.xks5p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(connection_string, tlsCAFile=certifi.where())
 
