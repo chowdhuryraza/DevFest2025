@@ -80,7 +80,7 @@ def update_guardian(guardian_id):
 @app.route('/create_recipient', methods=['POST'])
 def create_recipient():
   document = request.get_json() # frontend ensures all fields exist
-  res = recipient_tb.insert_one(document)
+  res = recepient_tb.insert_one(document)
   if not res.acknowledged:
     return jsonify({'message': 'unable to create'}), 404
   
@@ -89,7 +89,7 @@ def create_recipient():
 @app.route('/update_recipient/<recipient_id>', methods=['POST'])
 def update_recipient(recipient_id):
   updated_document = request.get_json()
-  res = recipient_tb.update_one({ "_id": ObjectId(recipient_id) }, { "$set": updated_document })
+  res = recepient_tb.update_one({ "_id": ObjectId(recipient_id) }, { "$set": updated_document })
   if not res.acknowledged:
     return jsonify({'message': 'update invalid'}), 404
   
@@ -97,7 +97,7 @@ def update_recipient(recipient_id):
 
 @app.route('/get_recipient/<recipient_id>', methods=['GET'])
 def get_recipient(recipient_id):
-  recipient = recipient_tb.find_one({ "_id": ObjectId(recipient_id) })
+  recipient = recepient_tb.find_one({ "_id": ObjectId(recipient_id) })
   if not recipient:
     return jsonify({'message': 'Recipient not found'}), 404
   
@@ -105,7 +105,7 @@ def get_recipient(recipient_id):
 
 @app.route('/get_recipients', methods=['GET'])
 def get_recipients():
-  recipients = list(recipient_tb.find())
+  recipients = list(recepient_tb.find())
   return jsonify(recipients), 200
 
 @app.route('/create_prescription', methods=['POST'])
