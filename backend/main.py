@@ -3,17 +3,18 @@ import os
 from pymongo import MongoClient
 import requests
 import certifi
+from dotenv import load_dotenv
+load_dotenv()
 
-connection_string = f"mongodb+srv://A:bsRW4ztO4C1JmiXE@cluster0.xks5p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+connection_string = f"mongodb+srv://A:{os.getenv('DB_PASSWORD')}@cluster0.xks5p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(connection_string, tlsCAFile=certifi.where())
 
 db = client["devfest"]
-
 guardiantb = db["guardian"]
 
 """ create/insert one post to db guardian collection """
-# post = { "_id": 2, "name": "chow", "email": "chow@gmail.com" }
-# guardiantb.insert_one(post)
+post = { "_id": 4, "name": "poopooo", "email": "hahaha@gmail.com" }
+guardiantb.insert_one(post)
 # insert_many(lists_of_posts)
 
 """ read/find posts by specifying attributes to search by, can be multiple """
