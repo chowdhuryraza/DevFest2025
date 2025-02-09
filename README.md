@@ -18,9 +18,7 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 - <b>Multi-Language Support</b> – Powered by Google Translate, our system speaks in the patient's native language  
 - <b>Custom Schedules</b> – Users can set reminders for specific hours and days based on each patient's needs  
 
-</br></br>
-
-<h2>Stack</h2>
+<h2>Our Tech Stack</h2>
 
 - Python Flask  
 - MongoDB  
