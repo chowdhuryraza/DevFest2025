@@ -21,13 +21,10 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 <h2>Our Tech Stack</h2>
 
 - Python (Flask) – API and backend logic
-
 - MongoDB – NoSQL database for storing prescription and recipient data
-
 - Twilio – Automated voice calls for reminders
-
+  
 - React – User interface
-
 - TypeScript – Type-safe frontend development
 
 <h2>Design</h2>
