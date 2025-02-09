@@ -22,7 +22,7 @@ from recipients import recipient_tb
 
 from recipients import recipient_tb
 
-@prescription_blueprint.route('/create_prescription', methods=['POST'])
+@prescription_blueprint.route('/create', methods=['POST'])
 def create_prescription():
   document = request.get_json() # frontend ensures all fields exist
   recipient = recipient_tb.find_one({ "name": document["recipient_name"] })
