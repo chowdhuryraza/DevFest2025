@@ -18,7 +18,7 @@ const SignUpForm = ({ updateCallback }) => {
             phone,
             password
         }
-        const url = "http://127.0.0.1:5000/create_guardian"
+        const url = "http://127.0.0.1:5000/guardians/create_guardian"
         const options = {
             method: "POST",
             headers: {
