@@ -21,25 +21,48 @@ recipient_tb = db["recipients"]
 
 @prescription_blueprint.route('/create', methods=['POST'])
 def create_prescription():
-  if 'user' not in session:
-    return jsonify({'message': 'please log in'}), 404
-  document = request.get_json() # frontend ensures all fields exist
-  print(document["recipient_id"])
+  # if 'user' not in session:
+  #   return jsonify({'message': 'please log in'}), 404
+  # document = request.get_json() # frontend ensures all fields exist
+  # print(document["recipient_id"])
 
-  recipient = recipient_tb.find_one({ "_id": ObjectId(document["recipient_id"]) })
+  # recipient = recipient_tb.find_one({ "_id": ObjectId(document["recipient_id"]) })
   
-  if not recipient:
-    return jsonify({'message': 'Recipient not found'}), 404
+  # if not recipient:
+  #   return jsonify({'message': 'Recipient not found'}), 404
   
-  document["recipient_id"] = recipient["_id"]
+  # document["recipient_id"] = recipient["_id"]
+  # document["recipient_id"] = recipient["_id"]
   
+  # res = prescription_tb.insert_one(document)
+  # recipient_tb.update_one({ "_id": recipient["_id"] }, { "$push": { "prescriptions": res.inserted_id } })
+  
+  # if not res.acknowledged:
+  #   return jsonify({'message': 'Error Creating Perscription'}), 404
+  
+  # return jsonify({'message': 'Prescription has been created'}), 200
+
+  medication = request.json.get("medication")
+  dosage = request.json.get("dosage")
+  instructions = request.json.get("instructions")
+  day = request.json.get("day")
+  time = request.json.get("time")
+  status = request.json.get("status")
+  print(medication, dosage, day, time, status)
+  document = {
+      "medication": medication,
+      "dosage": dosage,
+      "instructions": instructions,
+      "schedule": [{"day": day, "time": time}],
+      "status": status
+  }
+  print(document)
+
   res = prescription_tb.insert_one(document)
-  recipient_tb.update_one({ "_id": recipient["_id"] }, { "$push": { "prescriptions": res.inserted_id } })
-  
   if not res.acknowledged:
-    return jsonify({'message': 'Error Creating Perscription'}), 404
+    return jsonify({'message': 'Unable to create prescription'}), 404
   
-  return jsonify({'message': 'Prescription has been created'}), 200
+  return jsonify({'message': 'prescription created'}), 201
 
 @prescription_blueprint.route('/update/<prescription_id>', methods=['POST'])
 def update_prescription(prescription_id):
@@ -65,8 +88,8 @@ def get_prescription(prescription_id):
 
 @prescription_blueprint.route('/all', methods=['GET'])
 def get_all_prescriptions():
-  if 'user' not in session:
-    return jsonify({'message': 'please log in'}), 404
+  # if 'user' not in session:
+  #   return jsonify({'message': 'please log in'}), 404
   prescriptions = list(prescription_tb.find({ }))
   for i in range(len(prescriptions)):
     prescriptions[i]['_id'] = str(prescriptions[i]['_id'])

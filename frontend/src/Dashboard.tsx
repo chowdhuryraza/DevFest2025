@@ -116,6 +116,12 @@ function Dashboard() {
 
     return (
         <>
+            <nav className="flex justify-between items-center bg-black text-white p-4">
+                <h1 className="text-xl font-bold">CareLingo</h1>
+                <div className="flex space-x-2">
+                </div>
+            </nav>
+
             {/* Welcome, {name}{ } */}
             <p></p>
             <table>

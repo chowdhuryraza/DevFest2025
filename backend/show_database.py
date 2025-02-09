@@ -10,8 +10,13 @@ connection_string = f"mongodb+srv://A:{os.getenv('DB_PASSWORD')}@cluster0.xks5p.
 client = MongoClient(connection_string, tlsCAFile=certifi.where())
 
 db = client["devfest"]
-guardiantb = db["guardian"]
+# guardiantb = db["guardian"]
+prescriptiontb = db["prescription"]
 
-for x in guardiantb.find():
+# for x in guardiantb.find():
+#     print(x)
+#     print()
+
+for x in prescriptiontb.find():
     print(x)
     print()

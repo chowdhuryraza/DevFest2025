@@ -133,7 +133,8 @@
 
 
 import { useState } from 'react';
-import './App.css';
+// import './App.css';
+import './output.css';
 import SignUpForm from './SignUpForm';
 import Dashboard from './Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -160,47 +161,49 @@ function App() {
 
   return (
     <Router>
-      <nav className="flex justify-between items-center bg-black text-white p-4">
-        <h1 className="text-xl font-bold">CareLingo</h1>
-        <div className="flex space-x-2">
-          <button
-            className="bg-white text-white px-4 py-2 rounded hover:bg-gray-200"
-            onClick={openSignUpModal}
-          >
-            Sign Up
-          </button>
-          <button
-            className="bg-white text-white px-4 py-2 rounded hover:bg-gray-200"
-            onClick={loginRedirect}
-          >
-            Login
-          </button>
-        </div>
-      </nav>
       <Routes>
         <Route
           path="/"
           element={
-            <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://source.unsplash.com/random/1920x1080')" }}>
-              <div className="flex items-center justify-center h-full bg-black bg-opacity-60">
-                <div className="text-white text-center p-6">
-                  <h2 className="text-4xl font-semibold">About Us</h2>
-                  <p className="mt-4 text-lg">
-                    Welcome to CareLingo! We provide the best service to manage your tasks effectively. Join us in life-changing communication.
-                  </p>
+            <>
+              <nav className="flex justify-between items-center bg-black text-white p-4">
+                <h1 className="text-xl font-bold">CareLingo</h1>
+                <div className="flex space-x-2">
+                  <button
+                    className="bg-white text-white px-4 py-2 rounded hover:bg-gray-200"
+                    onClick={openSignUpModal}
+                  >
+                    Sign Up
+                  </button>
+                  <button
+                    className="bg-white text-white px-4 py-2 rounded hover:bg-gray-200"
+                    onClick={loginRedirect}
+                  >
+                    Login
+                  </button>
                 </div>
-              </div>
-              {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
-                  <div className="bg-white p-6 rounded shadow-md w-80">
-                    <span className="float-right text-gray-500 cursor-pointer" onClick={closeModal}>
-                      &times;
-                    </span>
-                    <SignUpForm updateCallback={onUpdate} />
+              </nav>
+              <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://source.unsplash.com/random/1920x1080')" }}>
+                <div className="flex items-center justify-center h-full bg-black bg-opacity-60">
+                  <div className="text-white text-center p-6">
+                    <h2 className="text-4xl font-semibold">About Us</h2>
+                    <p className="mt-4 text-lg">
+                      Welcome to CareLingo! We provide the best service to manage your tasks effectively. Join us in life-changing communication.
+                    </p>
                   </div>
                 </div>
-              )}
-            </div>
+                {isModalOpen && (
+                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
+                    <div className="bg-white p-6 rounded shadow-md w-80">
+                      <span className="float-right text-gray-500 cursor-pointer" onClick={closeModal}>
+                        &times;
+                      </span>
+                      <SignUpForm updateCallback={onUpdate} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
           }
         />
         <Route path="/dashboard" element={<Dashboard />} />

@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 const AddPrescription = ({ updateCallback }) => {
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [phone, setPhone] = useState();
-    const [password, setPassword] = useState();
+    const [medication, setMedication] = useState();
+    const [dosage, setDosage] = useState();
+    const [instructions, setInstructions] = useState();
+    const [day, setDay] = useState();
+    const [time, setTime] = useState();
+    const [status, setStatus] = useState();
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -12,8 +14,10 @@ const AddPrescription = ({ updateCallback }) => {
         const data = {
             medication,
             dosage,
+            instructions,
             day,
-            time
+            time,
+            status
         }
 
         const url = "http://127.0.0.1:5000/prescriptions/create"
@@ -43,7 +47,7 @@ const AddPrescription = ({ updateCallback }) => {
                     type="text"
                     id="medication"
                     // value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setMedication(e.target.value)}
                 />
             </div>
             <div>
@@ -52,7 +56,16 @@ const AddPrescription = ({ updateCallback }) => {
                     type="text"
                     id="dosage"
                     // value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setDosage(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="instructions">Instructions: </label>
+                <input
+                    type="text"
+                    id="instructions"
+                    // value={email}
+                    onChange={(e) => setInstructions(e.target.value)}
                 />
             </div>
             <div>
@@ -61,7 +74,7 @@ const AddPrescription = ({ updateCallback }) => {
                     type="text"
                     id="day"
                     // value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setDay(e.target.value)}
                 />
             </div>
             <div>
@@ -70,7 +83,7 @@ const AddPrescription = ({ updateCallback }) => {
                     type="text"
                     id="time"
                     // value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setTime(e.target.value)}
                 />
             </div>
             <div>
@@ -79,7 +92,7 @@ const AddPrescription = ({ updateCallback }) => {
                     type="text"
                     id="status"
                     // value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setStatus(e.target.value)}
                 />
             </div>
             <button type="submit">{"Submit"}</button>
