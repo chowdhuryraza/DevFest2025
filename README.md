@@ -11,6 +11,9 @@ CareLingo is a website deidicated to bridging language barriers and automate rem
 Using our platform, users can register as guardians and remind patients from their parents, grandparents and more about their medicine during specific hours and days. We use the Twilio API to make real voice calls with the GoogleTranslate API to speak in the patients own language.
 </samp>
 
+</br>
+</br>
+
 Stack:
 Python Flask
 Mongodb
