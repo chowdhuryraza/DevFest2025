@@ -2,42 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import SignUpForm from "./SignUpForm";
 import Dashboard from "./Dashboard";
-import {
-  BrowserRouter as Router, Routes, Route, Link
-} from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 function App() {
-  const [count, setCount] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  // const onSubmit = async (e) => {
-  const onSubmit = async () => {
-    // e.preventDefault()
-
-    // const data = {
-    //     firstName,
-    //     lastName,
-    //     email
-    // }
-    // const url = "http://127.0.0.1:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
-    const url = "http://127.0.0.1:5000/register"
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // // body: JSON.stringify(data)
-      body: JSON.stringify({ "hi": "hello" })
-    }
-    // console.log(options.mode)
-    const response = await fetch(url, options)
-    // if (response.status !== 201 && response.status !== 200) {
-    //   const data = await response.json()
-    //   alert(data.message)
-    // } // else {
-    //     updateCallback()
-    // }
-  }
 
   const openSignUpModal = () => {
     if (!isModalOpen) setIsModalOpen(true)
@@ -50,7 +18,6 @@ function App() {
 
   const onUpdate = () => {
     closeModal()
-    // fetchContacts()
   }
 
   const loginRedirect = () => {
@@ -69,7 +36,6 @@ function App() {
               <div className="modal-content">
                 <span className="close" onClick={closeModal}>&times;</span>
                 <SignUpForm updateCallback={onUpdate} />
-                {/* <SignUpForm existingContact={currentContact} updateCallback={onUpdate} /> */}
               </div>
             </div>
             }

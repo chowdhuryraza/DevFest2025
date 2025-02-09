@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SignUpForm = ({ updateCallback }) => {
+const AddPrescription = ({ updateCallback }) => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [phone, setPhone] = useState();
@@ -16,7 +16,7 @@ const SignUpForm = ({ updateCallback }) => {
             password
         }
 
-        const url = "http://127.0.0.1:5000/register"
+        const url = "http://127.0.0.1:5000/prescriptions/create"
 
         const options = {
             method: "POST",
@@ -78,4 +78,4 @@ const SignUpForm = ({ updateCallback }) => {
     );
 };
 
-export default SignUpForm
+export default AddPrescription
