@@ -51,6 +51,11 @@ function App() {
     // fetchContacts()
   }
 
+  const loginRedirect = () => {
+    console.log("hi")
+    window.location.href = "/dashboard"
+  }
+
   return (
     <>
       <button onClick={openSignUpModal}>Sign Up</button>
@@ -62,6 +67,7 @@ function App() {
         </div>
       </div>
       }
+      <button onClick={loginRedirect}>Login</button>
     </>
   )
 }
