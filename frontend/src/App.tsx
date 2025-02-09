@@ -20,7 +20,7 @@ function App() {
     //     email
     // }
     // const url = "http://127.0.0.1:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
-    const url = "http://127.0.0.1:5000/create_guardian"
+    const url = "http://127.0.0.1:5000/register"
     const options = {
       method: "POST",
       headers: {
