@@ -20,8 +20,6 @@ prescription_tb = db["prescriptions"]
 
 from recipients import recipient_tb
 
-from recipients import recipient_tb
-
 @prescription_blueprint.route('/create', methods=['POST'])
 def create_prescription():
   document = request.get_json() # frontend ensures all fields exist
