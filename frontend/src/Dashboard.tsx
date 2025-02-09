@@ -105,7 +105,7 @@ function Dashboard() {
     }
 
     const closeModal = () => {
-        console.log(prescriptions[0]);
+        // console.log(prescriptions[0]);
         setIsModalOpen(false)
         // setCurrentContact({})
     }
