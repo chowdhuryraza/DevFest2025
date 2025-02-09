@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class Guardian(UserMixin, dict):
     def __init__(self, db_client, email):
         guardian = db_client.find_one({"email": email})
-        if guardian is None:
+        if guardian is None:``
             raise ValueError("Account does not exist.")
 
         super().__init__()
