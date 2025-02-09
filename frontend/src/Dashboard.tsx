@@ -2,7 +2,22 @@ import { useState } from 'react'
 
 function Dashboard() {
 
+    // const [prescriptions, setPrescriptions] = useState();
     name = "NAME HERE";
+
+    const onSubmit = async () => {
+        const url = "http://127.0.0.1:5000/prescriptions/all"
+        const options = { method: "GET" }
+        const response = await fetch(url, options)
+        console.log(response);
+        console.log("!!")
+        if (response.status !== 201 && response.status !== 200) {
+            const data = await response.json()
+            alert(data.message)
+        } // else {
+        //     updateCallback()
+        // }
+    }
 
     const prescriptions = [
         { id: 1, medication: 'Cabbage', dosage: '11', instructions: "A" },
