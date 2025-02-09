@@ -70,7 +70,7 @@ def create_guardian():
   if not res.acknowledged:
     return jsonify({'message': 'Unable to create guardian'}), 404
   
-  Guardian.create_user(guardian_tb, email, generate_password_hash(password), name, phone)
+  # Guardian.create_user(guardian_tb, email, generate_password_hash(password), name, phone)
   return jsonify({'message': 'Guardian created successfully'}), 201
   
 @guardian_blueprint.route('/update_guardian/<guardian_id>', methods=['POST'])
