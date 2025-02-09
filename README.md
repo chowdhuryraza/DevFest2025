@@ -13,10 +13,10 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 
 <h2>Key Features</h2>
 
-✅ <b>Guardian-Powered Reminders</b> – Family members can register as guardians to schedule medication alerts for loved ones  
-✅ <b>Real-Time Voice Calls</b> – We utilize the Twilio API to deliver medication reminders via automated voice calls  
-✅ <b>Multi-Language Support</b> – Powered by Google Translate, our system speaks in the patient's native language  
-✅ <b>Custom Schedules</b> – Users can set reminders for specific hours and days based on each patient's needs  
+- <b>Guardian-Powered Reminders</b> – Family members can register as guardians to schedule medication alerts for loved ones  
+- <b>Real-Time Voice Calls</b> – We utilize the Twilio API to deliver medication reminders via automated voice calls  
+- <b>Multi-Language Support</b> – Powered by Google Translate, our system speaks in the patient's native language  
+- <b>Custom Schedules</b> – Users can set reminders for specific hours and days based on each patient's needs  
 
 </br></br>
 
