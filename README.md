@@ -27,6 +27,9 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 - React: User interface
 - TypeScript: Type-safe frontend development
 
+- <b>Guardian-Powered Reminders</b> – Family members can register as guardians to schedule medication alerts for loved ones  
+- <b>Real-Time Voice Calls</b> – We utilize the Twilio API to deliver medication reminders via automated voice calls  
+
 <h2>Design</h2>
 
 (Insert details about UI/UX, architecture, or workflow here)  
