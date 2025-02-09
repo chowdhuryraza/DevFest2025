@@ -18,7 +18,6 @@ function App() {
 
   const onUpdate = () => {
     closeModal()
-    // fetchContacts()
   }
 
   const loginRedirect = () => {

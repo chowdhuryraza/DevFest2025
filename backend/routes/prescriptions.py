@@ -77,4 +77,5 @@ def get_all_prescriptions():
       prescriptions[i]['recipient_id'] = str(prescriptions[i]['recipient_id'])
 
     print("HAHA  ------yjyjyjAFTER!!!     ",prescriptions[i])
+  print("YEET! ", jsonify(prescriptions))
   return jsonify(prescriptions), 200
