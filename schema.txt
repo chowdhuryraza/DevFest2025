@@ -1,3 +1,57 @@
+##############################################################
+#                     PROJECT SCHEMA                         #
+##############################################################
+
+──────────────────────────────────────────────────────────────
+  GUARDIANS (Users who manage reminders)                   
+──────────────────────────────────────────────────────────────
+│ _id          | ObjectId   | Primary Key                     
+│ name         | string     | Guardian's full name            
+│ email        | string     | Unique email                    
+│ password     | HASH       | Encrypted password              
+│ phone        | int        | Contact number                  
+│ recipients   | [ObjectId] | List of registered patients     
+──────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────
+  RECIPIENTS (Patients receiving reminders)                
+──────────────────────────────────────────────────────────────
+│ _id           | ObjectId   | Primary Key                     
+│ guardian_id   | ObjectId   | FK → Guardians                  
+│ name          | string     | Patient's full name             
+│ phone         | int        | Contact number                  
+│ language      | string     | Preferred language              
+│ timezone      | string     | Patient's timezone              
+│ prescriptions | [ObjectId] | List of active prescriptions    
+│ call_logs     | [ObjectId] | History of past calls          
+──────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────
+  PRESCRIPTIONS (Medication schedule for recipients)       
+──────────────────────────────────────────────────────────────
+│ _id          | ObjectId      | Primary Key                     
+│ recipient_id | ObjectId      | FK → Recipients                 
+│ medication   | string        | Name of the medication          
+│ dosage       | string        | Dosage details                  
+│ instructions | string        | Instructions for intake         
+│ schedule     | [{week_day, time}] | Custom reminder schedule    
+│ status       | string          |  {active, paused, done}         
+──────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────
+  CALL LOGS (History of automated calls)                   
+──────────────────────────────────────────────────────────────
+│ _id             | ObjectId  | Primary Key                     
+│ recipient_id    | ObjectId  | FK → Recipients                 
+│ prescription_id | ObjectId  | FK → Prescriptions             
+│ status          | string    | {success, fail}                
+│ call_duration   | int       | Call duration in seconds       
+│ recording       | string    | Twilio MP3 file link           
+──────────────────────────────────────────────────────────────
+
+
+
+
 # guardians
 {
   _id: ObjectId,
