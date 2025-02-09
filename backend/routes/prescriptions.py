@@ -17,12 +17,19 @@ client = MongoClient(connection_string, tlsCAFile=certifi.where())
 db = client["devfest"]
 prescription_tb = db["prescriptions"]
 
+from recipients import recipient_tb
+
 @prescription_blueprint.route('/create_prescription', methods=['POST'])
 def create_prescription():
   document = request.get_json() # frontend ensures all fields exist
+  recipient = recipient_tb.find_one({ "name": document["recipient_name"] })
+  if not recipient:
+    return jsonify({'message': 'Recipient not found'}), 404
+  document["recipient_id"] = recipient["_id"]
   res = prescription_tb.insert_one(document)
+  recipient_tb.update_one({ "_id": recipient["_id"] }, { "$push": { "prescriptions": res.inserted_id } })
   if not res.acknowledged:
-    return jsonify({'message': 'unable to create'}), 404
+    return jsonify({'message': 'Error Creating Perscription'}), 404
   
   return jsonify({'message': 'Prescription has been created'}), 200
 
@@ -47,4 +54,6 @@ def get_prescription(prescription_id):
 def get_prescriptions():
   prescriptions = list(prescription_tb.find({ }))
   return jsonify(prescriptions), 200
+
+
 
