@@ -51,7 +51,7 @@ def make_call(recipient_id, document):
 
     twiml = f'''<?xml version="1.0" encoding="UTF-8"?>
         <Response>
-            <Say voice="alice" language="en-US">Hello! you need to take {medication} with a dosage of {dosage} right now</Say>
+            <Say voice="alice" language="{language}">Hello! you need to take {medication} with a dosage of {dosage} right now</Say>
         </Response>'''
 
     call = client.calls.create(
