@@ -8,7 +8,7 @@ leading to misunderstandings and missed doses.
 </p>
 
 <p>
-CareLingo bridges this gap by providing a smart, automated reminder system** that ensures patients never miss their medication -- done all in their own language!
+CareLingo bridges this gap by providing a smart, automated reminder system that ensures patients never miss their medication -- done all in their own language!
 </p>
 
 <h2>Key Features</h2>
