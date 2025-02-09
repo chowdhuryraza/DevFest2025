@@ -20,8 +20,45 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 
 <h2>Our Tech Stack</h2>
 
-- <b>Guardian-Powered Reminders</b> – Family members can register as guardians to schedule medication alerts for loved ones  
-- <b>Real-Time Voice Calls</b> – We utilize the Twilio API to deliver medication reminders via automated voice calls  
+<table>
+
+<tr>
+<td width="33%"">
+Python (Flask)
+</td>
+<td width="66%">
+API and backend logic
+</td>
+</tr>
+   
+<tr>
+<td width="20%"">
+MongoDB
+</td>
+<td width="80%">
+NoSQL database for storing prescription and recipient data
+</td>
+</tr>
+
+<tr>
+<td width="33%"">
+<samp>Reducer.js</samp>
+</td>
+<td width="66%">
+<samp>Pure function that updates the current state with action type</samp>
+</td>
+</tr>
+
+<tr>
+<td width="33%"">
+<samp>useGoogleSearch.js</samp>
+</td>
+<td width="66%">
+<samp>Custom hook that sends asynchronous request to Google API to fetch results</samp>
+</td>
+</tr>
+  
+</table>
 
 - Python (Flask): API and backend logic
 - MongoDB: NoSQL database for storing prescription and recipient data
@@ -32,7 +69,7 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 
 <h2>Design</h2>
 
-(Insert details about UI/UX, architecture, or workflow here)  
+
 
 <h2>Future Work</h2>
 
