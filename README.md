@@ -42,6 +42,8 @@ to ensure the patient receives the reminder in their preferred language.
 
 <h2>Future Work</h2>
 
-(Planned improvements, additional features, scalability ideas)  
+- Expand time options to support biweekly and monthly reminders  
+- Allow patients to receive reminders via SMS in addition to voice calls  
+- Connect with healthcare providers for direct prescription updates 
 
 </samp>
