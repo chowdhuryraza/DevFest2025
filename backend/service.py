@@ -15,6 +15,21 @@ import requests
 import certifi
 from datetime import datetime
 
+from deep_translator import GoogleTranslator
+from twilio.twiml.voice_response import VoiceResponse, Say
+from twilio.rest import Client
+
+langcode_to_iso39 = {
+  "hi-IN": "hi",
+  "en-GB": "en",
+  "cmn-CN": "zh",
+  "yue-HK": "yue",
+  "arb": "ar",
+  "ta-IN": "ta",
+  "vi-VN": "vi"
+}
+
+
 prescription_blueprint = Blueprint('prescriptions', __name__)
 
 connection_string = f"mongodb+srv://A:{os.getenv('DB_PASSWORD')}@cluster0.xks5p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -27,6 +42,7 @@ recipient_tb = db["recipients"]
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 client = Client(account_sid, auth_token)
+
 
 def make_call(recipient_id, document):
   recipient = recipient_tb.find_one({"_id": ObjectId(recipient_id)})
@@ -49,15 +65,17 @@ def make_call(recipient_id, document):
     print("make call")
     # agregrate presecription and recipeient info and then make call
 
-    twiml = f'''<?xml version="1.0" encoding="UTF-8"?>
-        <Response>
-            <Say voice="alice" language="{language}">Hello! you need to take {medication} with a dosage of {dosage} right now</Say>
-        </Response>'''
+    message = f"Hello! you need to take {medication} with a dosage of {dosage} right now"
+    translated_message = GoogleTranslator(source='en', target=langcode_to_iso39[language]).translate(message)
+    print(translated_message)
+    response = VoiceResponse()
+    response.say(translated_message, language='hi-IN', loop=2)
+
 
     call = client.calls.create(
         to=phone_number,
         from_="+18885925103",  # Your Twilio phone number
-        twiml=twiml
+        twiml=response.to_xml()
     )
 
     print(call.sid)
