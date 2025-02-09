@@ -6,10 +6,27 @@ function Dashboard() {
     name = "NAME HERE";
 
     const onSubmit = async () => {
+        const data = { email: "123456", password: "123456" }
+        const urlLog = "http://127.0.0.1:5000/login"
+        const optionsLog = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+        const responseLog = await fetch(urlLog, optionsLog)
+        console.log("login response:")
+        console.log(await responseLog.json())
+        if (responseLog.status !== 201 && responseLog.status !== 200) {
+            const data = await responseLog.json()
+            alert(data.message)
+        }
+
         const url = "http://127.0.0.1:5000/prescriptions/all"
         const options = { method: "GET" }
         const response = await fetch(url, options)
-        console.log(response);
+        console.log(await response.json());
         console.log("!!")
         if (response.status !== 201 && response.status !== 200) {
             const data = await response.json()
@@ -18,6 +35,8 @@ function Dashboard() {
         //     updateCallback()
         // }
     }
+
+    onSubmit()
 
     const prescriptions = [
         { id: 1, medication: 'Cabbage', dosage: '11', instructions: "A" },
