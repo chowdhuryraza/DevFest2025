@@ -5,7 +5,7 @@ function Dashboard() {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [prescriptions, setPrescriptions] = useState([]);
-    name = "NAME HERE";
+    // name = "NAME HERE";
 
     const onSubmit = async () => {
         // const data = { email: "123456", password: "123456" }
@@ -105,7 +105,7 @@ function Dashboard() {
     }
 
     const closeModal = () => {
-        // console.log(prescriptions[0]);
+        // console.log(prescriptions[2]);
         setIsModalOpen(false)
         // setCurrentContact({})
     }
@@ -116,7 +116,7 @@ function Dashboard() {
 
     return (
         <>
-            Welcome, {name}{ }
+            {/* Welcome, {name}{ } */}
             <p></p>
             <table>
                 <thead>
@@ -125,6 +125,7 @@ function Dashboard() {
                         <th>Dosage</th>
                         <th>Instructions</th>
                         <th>Schedule</th>
+                        <th>Status</th>
                         <th>Options</th>
                     </tr>
                 </thead>
@@ -135,9 +136,16 @@ function Dashboard() {
                             <td>{prescription.medication}</td>
                             <td>{prescription.dosage}</td>
                             <td>{prescription.instructions}</td>
-                            <td>{prescription.instructions} SCHEDULE!</td>
+                            <td>{prescription.schedule ?
+                                prescription.schedule.map((day) =>
+                                    <div key={day.day}>{day.day} {day.time}</div>
+                                )
+                                :
+                                "No schedule"}</td>
+                            <td>{prescription.status}</td>
+
                             <td>
-                                <button onClick={() => updateContact(contact)}>Update</button>
+                                {/* <button onClick={() => updateContact(contact)}>Update</button> */}
                                 <button onClick={() => onDelete(contact.id)}>Delete</button>
                             </td>
                         </tr>
