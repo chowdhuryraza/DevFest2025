@@ -5,11 +5,9 @@ Millions of elderly people and immigrants struggle with medication due to langua
 While doctors and pharmacies may send reminders, they often can't communicate in the patient's native language or dialect,  
 leading to misunderstandings and missed doses.
 
-</br></br>
-
 CareLingo bridges this gap by providing a **smart, automated reminder system** that ensures patients **never miss their medication**—all in their own language!
 
-</br></br>
+</br>
 
 <h2>Key Features</h2>
 
