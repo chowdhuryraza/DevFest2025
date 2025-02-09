@@ -65,7 +65,12 @@ def get_prescription(prescription_id):
 
 @prescription_blueprint.route('/all', methods=['GET'])
 def get_all_prescriptions():
-  # if 'user' not in session:
-  #   return jsonify({'message': 'please log in'}), 404
+  if 'user' not in session:
+    return jsonify({'message': 'please log in'}), 404
   prescriptions = list(prescription_tb.find({ }))
+  for i in range(len(prescriptions)):
+    prescriptions[i]['_id'] = str(prescriptions[i]['_id'])
+    print(prescriptions[i])
+
+
   return jsonify(prescriptions), 200

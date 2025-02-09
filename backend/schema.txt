@@ -27,7 +27,7 @@
   "medication": string,
   "dosage": "",
   "instructions": "",
-  /* CAN make more epansive, monthly, daily, yearly presecriptions */
+  /* CAN make more expansive, monthly, daily, yearly presecriptions */
   "schedule": [
       { "day": "monday", "time": "02:30" },
       { "day": "tuesday", "time": "05:30" }
