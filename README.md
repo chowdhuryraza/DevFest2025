@@ -29,7 +29,16 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 
 <h2>Design</h2>
 
+<p>
+Each guardian can register multiple patients, each with their own prescriptions.  
+Prescriptions include specific days and times for automated medication reminders.  
+</p>
 
+<p>
+A scheduled cron job continuously scans our database for upcoming reminders.  
+When it's time, we trigger a Twilio API call, converting text to speech using Google Translate  
+to ensure the patient receives the reminder in their preferred language.
+</p>
 
 <h2>Future Work</h2>
 
