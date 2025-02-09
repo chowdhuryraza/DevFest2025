@@ -20,52 +20,12 @@ CareLingo bridges this gap by providing a smart, automated reminder system** tha
 
 <h2>Our Tech Stack</h2>
 
-<table>
-
-<tr>
-<td width="33%"">
-Python (Flask)
-</td>
-<td width="66%">
-API and backend logic
-</td>
-</tr>
-   
-<tr>
-<td width="20%"">
-MongoDB
-</td>
-<td width="80%">
-NoSQL database for storing prescription and recipient data
-</td>
-</tr>
-
-<tr>
-<td width="33%"">
-<samp>Reducer.js</samp>
-</td>
-<td width="66%">
-<samp>Pure function that updates the current state with action type</samp>
-</td>
-</tr>
-
-<tr>
-<td width="33%"">
-<samp>useGoogleSearch.js</samp>
-</td>
-<td width="66%">
-<samp>Custom hook that sends asynchronous request to Google API to fetch results</samp>
-</td>
-</tr>
+- <b>Python (Flask)</b>: API and backend logic
+- <b>MongoDB</b>: NoSQL database for storing prescription and recipient data
+- <b>Twilio</b>: Automated voice calls for reminders
   
-</table>
-
-- Python (Flask): API and backend logic
-- MongoDB: NoSQL database for storing prescription and recipient data
-- Twilio: Automated voice calls for reminders
-  
-- React: User interface
-- TypeScript: Type-safe frontend development
+- <b>React</b>: User interface
+- <b>TypeScript</b>: Type-safe frontend development
 
 <h2>Design</h2>
 
