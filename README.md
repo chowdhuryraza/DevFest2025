@@ -14,10 +14,15 @@ Using our platform, users can register as guardians and remind patients from the
 </br>
 </br>
 
+<samp>
 Stack:
-Python Flask
-Mongodb
-React, Typescript
+  - Python Flask
+  - Mongodb
+  - React, Typescript
+</samp>
+
+</br>
+</br>
 
 Design:
 
