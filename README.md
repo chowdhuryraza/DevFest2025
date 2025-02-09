@@ -8,6 +8,8 @@ Millions of elderly people and immigrants struggle with medication due to langua
 
 CareLingo bridges this gap by providing a smart, automated reminder system that ensures patients never miss their medication—all in their own language!
 
+</br>
+</br>
 
 <h2>Key Features</h2>
   - ✅ Guardian-Powered Reminders – Family members can register as guardians to schedule medication alerts for loved ones
