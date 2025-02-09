@@ -15,7 +15,6 @@ from bson import ObjectId
 from flask_cors import CORS
 
 from werkzeug.security import generate_password_hash
-from models import Guardian
 
 from routes.guardians import guardian_blueprint
 from routes.recipients import recipient_blueprint
