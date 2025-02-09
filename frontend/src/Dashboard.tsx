@@ -5,7 +5,7 @@ function Dashboard() {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [prescriptions, setPrescriptions] = useState([]);
-    name = "NAME HERE";
+    // name = "NAME HERE";
 
     const onSubmit = async () => {
         // const data = { email: "123456", password: "123456" }
@@ -116,7 +116,7 @@ function Dashboard() {
 
     return (
         <>
-            Welcome, {name}{ }
+            {/* Welcome, {name}{ } */}
             <p></p>
             <table>
                 <thead>
