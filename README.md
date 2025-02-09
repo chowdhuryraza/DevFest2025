@@ -1,6 +1,7 @@
+<samp>
+  
 # CareLingo
 
-<samp>
 <p>
 Millions of elderly people and immigrants struggle with medication due to language barriers and forgetfulness.  
 While doctors and pharmacies may send reminders, they often can't communicate in the patient's native language or dialect,  
