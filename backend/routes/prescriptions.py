@@ -70,7 +70,8 @@ def get_all_prescriptions():
   prescriptions = list(prescription_tb.find({ }))
   for i in range(len(prescriptions)):
     prescriptions[i]['_id'] = str(prescriptions[i]['_id'])
-    print(prescriptions[i])
 
+    if 'recipient_id' in prescriptions[i]:
+      prescriptions[i]['recipient_id'] = str(prescriptions[i]['recipient_id'])
 
   return jsonify(prescriptions), 200
