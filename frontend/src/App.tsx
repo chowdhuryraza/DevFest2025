@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import SignUpForm from "./SignUpForm";
+import Dashboard from "./Dashboard";
+import {
+  BrowserRouter as Router, Routes, Route, Link
+} from "react-router";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -57,18 +59,28 @@ function App() {
   }
 
   return (
-    <>
-      <button onClick={openSignUpModal}>Sign Up</button>
-      {isModalOpen && <div className="modal">
-        <div className="modal-content">
-          <span className="close" onClick={closeModal}>&times;</span>
-          <SignUpForm updateCallback={onUpdate} />
-          {/* <SignUpForm existingContact={currentContact} updateCallback={onUpdate} /> */}
-        </div>
-      </div>
-      }
-      <button onClick={loginRedirect}>Login</button>
-    </>
+    <Router>
+      <Routes>
+
+        <Route path="/" element={
+          <>
+            <button onClick={openSignUpModal}>Sign Up</button>
+            {isModalOpen && <div className="modal">
+              <div className="modal-content">
+                <span className="close" onClick={closeModal}>&times;</span>
+                <SignUpForm updateCallback={onUpdate} />
+                {/* <SignUpForm existingContact={currentContact} updateCallback={onUpdate} /> */}
+              </div>
+            </div>
+            }
+            <button onClick={loginRedirect}>Login</button>
+          </>
+        } />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+
+      </Routes>
+    </Router >
   )
 }
 
