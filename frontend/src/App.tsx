@@ -1,53 +1,103 @@
-import { useState } from 'react'
-import './App.css'
+// import { useState } from 'react'
+// import './App.css'
+// import SignUpForm from "./SignUpForm";
+// import Dashboard from "./Dashboard";
+// import { BrowserRouter as Router, Routes, Route } from "react-router";
+
+// function App() {
+//   const [isModalOpen, setIsModalOpen] = useState(false)
+
+//   const openSignUpModal = () => {
+//     if (!isModalOpen) setIsModalOpen(true)
+//   }
+
+//   const closeModal = () => {
+//     setIsModalOpen(false)
+//     // setCurrentContact({})
+//   }
+
+//   const onUpdate = () => {
+//     closeModal()
+//   }
+
+//   const loginRedirect = () => {
+//     console.log("hi")
+//     window.location.href = "/dashboard"
+//   }
+
+//   return (
+//     <Router>
+//       <Routes>
+
+//         <Route path="/" element={
+//           <>
+//             <button onClick={openSignUpModal}>Sign Up</button>
+//             {isModalOpen && <div className="modal">
+//               <div className="modal-content">
+//                 <span className="close" onClick={closeModal}>&times;</span>
+//                 <SignUpForm updateCallback={onUpdate} />
+//               </div>
+//             </div>
+//             }
+//             <button onClick={loginRedirect}>Login</button>
+//           </>
+//         } />
+
+//         <Route path="/dashboard" element={<Dashboard />} />
+
+//       </Routes>
+//     </Router >
+//   )
+// }
+
+// export default App
+
+import { useState } from 'react';
+import './App.css';
 import SignUpForm from "./SignUpForm";
 import Dashboard from "./Dashboard";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import Hero from "components/Hero.tsk"; // Import the Hero component
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openSignUpModal = () => {
-    if (!isModalOpen) setIsModalOpen(true)
-  }
+    if (!isModalOpen) setIsModalOpen(true);
+  };
 
   const closeModal = () => {
-    setIsModalOpen(false)
-    // setCurrentContact({})
-  }
+    setIsModalOpen(false);
+  };
 
   const onUpdate = () => {
-    closeModal()
-  }
+    closeModal();
+  };
 
   const loginRedirect = () => {
-    console.log("hi")
-    window.location.href = "/dashboard"
-  }
+    window.location.href = "/dashboard";
+  };
 
   return (
     <Router>
       <Routes>
-
         <Route path="/" element={
           <>
-            <button onClick={openSignUpModal}>Sign Up</button>
+            <Hero openSignUpModal={openSignUpModal} /> {/* Use the Hero component */}
             {isModalOpen && <div className="modal">
               <div className="modal-content">
                 <span className="close" onClick={closeModal}>&times;</span>
                 <SignUpForm updateCallback={onUpdate} />
               </div>
-            </div>
-            }
+            </div>}
             <button onClick={loginRedirect}>Login</button>
           </>
         } />
 
         <Route path="/dashboard" element={<Dashboard />} />
-
       </Routes>
-    </Router >
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
