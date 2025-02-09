@@ -1,14 +1,20 @@
 # DevFest2025
 
 <samp>
-CareLingo is a website deidicated to bridging language barriers and automate reminders. Many elderly and immigrants often forget or misunderstand their prescriptions. Doctors and pharmicies who remind patients might also reach out, but may not speak the language or correct dialect to get thier point across.
+Millions of elderly people and immigrants struggle with medication due to language barriers and forgetfulness. While doctors and pharmacies may send reminders, they often can't communicate in the patient's native language or dialect, leading to misunderstandings and missed doses.
 </samp>
 
 </br>
 </br>
 
 <samp>
-Using our platform, users can register as guardians and remind patients from their parents, grandparents and more about their medicine during specific hours and days. We use the Twilio API to make real voice calls with the GoogleTranslate API to speak in the patients own language.
+CareLingo bridges this gap by providing a smart, automated reminder system that ensures patients never miss their medication—all in their own language!
+
+Key Features
+  - ✅ Guardian-Powered Reminders – Family members can register as guardians to schedule medication alerts for their parents to family members
+  - ✅ Real-Time Voice Calls – We utilize the Twilio API to deliver medication reminders via automated voice calls
+  - ✅ Multi-Language Support – Powered by Google Translate, our system speaks in the patient's native language
+  - ✅ Custom Schedules – Uers can set reminders for specific hours and days based on each patient's needs
 </samp>
 
 </br>
