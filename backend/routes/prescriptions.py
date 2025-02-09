@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash
 from bson import ObjectId
 import os
+from flask import session, jsonify
 
 import pymongo
 from pymongo import MongoClient
@@ -17,7 +18,7 @@ client = MongoClient(connection_string, tlsCAFile=certifi.where())
 db = client["devfest"]
 prescription_tb = db["prescriptions"]
 
-@prescription_blueprint.route('/create_prescription', methods=['POST'])
+@prescription_blueprint.route('/create', methods=['POST'])
 def create_prescription():
   document = request.get_json() # frontend ensures all fields exist
   res = prescription_tb.insert_one(document)
@@ -26,7 +27,7 @@ def create_prescription():
   
   return jsonify({'message': 'Prescription has been created'}), 200
 
-@prescription_blueprint.route('/update_prescription/<prescription_id>', methods=['POST'])
+@prescription_blueprint.route('/update/<prescription_id>', methods=['POST'])
 def update_prescription(prescription_id):
   updated_document = request.get_json()
   res = prescription_tb.update_one({ "_id": ObjectId(prescription_id) }, { "$set": updated_document })
@@ -35,7 +36,7 @@ def update_prescription(prescription_id):
   
   return jsonify({'message': 'Prescription has been updated'}), 200
 
-@prescription_blueprint.route('/get_prescription/<prescription_id>', methods=['GET'])
+@prescription_blueprint.route('/<prescription_id>', methods=['GET'])
 def get_prescription(prescription_id):
   prescription = prescription_tb.find_one({ "_id": ObjectId(prescription_id) })
   if not prescription:
@@ -43,8 +44,8 @@ def get_prescription(prescription_id):
   
   return jsonify(prescription), 200
 
-@prescription_blueprint.route('/get_prescriptions', methods=['GET'])
-def get_prescriptions():
+@prescription_blueprint.route('/all', methods=['GET'])
+def get_all_prescriptions():
   prescriptions = list(prescription_tb.find({ }))
   return jsonify(prescriptions), 200
 
