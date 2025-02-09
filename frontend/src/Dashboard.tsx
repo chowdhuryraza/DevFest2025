@@ -1,27 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Dashboard() {
 
-    // const [prescriptions, setPrescriptions] = useState();
+    const [prescriptions, setPrescriptions] = useState([]);
     name = "NAME HERE";
 
     const onSubmit = async () => {
-        const data = { email: "123456", password: "123456" }
-        const urlLog = "http://127.0.0.1:5000/login"
-        const optionsLog = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }
-        const responseLog = await fetch(urlLog, optionsLog)
-        console.log("login response:")
-        console.log(await responseLog.json())
-        if (responseLog.status !== 201 && responseLog.status !== 200) {
-            const data = await responseLog.json()
-            alert(data.message)
-        }
+        // const data = { email: "123456", password: "123456" }
+        // const urlLog = "http://127.0.0.1:5000/login"
+        // const optionsLog = {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(data)
+        // }
+        // const responseLog = await fetch(urlLog, optionsLog)
+        // console.log("login response:")
+        // console.log(await responseLog.json())
+        // if (responseLog.status !== 201 && responseLog.status !== 200) {
+        //     const data = await responseLog.json()
+        //     alert(data.message)
+        // }
 
         const url = "http://127.0.0.1:5000/prescriptions/all"
         const options = { method: "GET" }
@@ -36,13 +36,49 @@ function Dashboard() {
         // }
     }
 
-    onSubmit()
+    const getMyPrescriptions = async () => {
+        const url = "http://127.0.0.1:5000/prescriptions/all"
+        const options = { method: "GET" }
+        const response = await fetch(url, options)
+        // let data;
+        // console.log(data);
+        // console.log("!!")
+        if (response.status !== 201 && response.status !== 200) {
+            const data = await response.json()
+            alert(data.message)
+        }
+        // console.log(await response.json());
+        const presData = await response.json();
+        // data.then((response) => {
+        //     console.log(`Received response: ${response.status}`);
+        // });
+        setPrescriptions(presData);
+        // return presData;
+        // else {
+        //     updateCallback()
+        // }
+    }
 
-    const prescriptions = [
-        { id: 1, medication: 'Cabbage', dosage: '11', instructions: "A" },
-        { id: 2, medication: 'Garlic', dosage: "12", instructions: "A" },
-        { id: 3, medication: 'Apple', dosage: "13", instructions: "A" },
-    ];
+    // onSubmit()
+    // getMyPrescriptions();
+
+    // const prescriptions = [
+    //     { id: 1, medication: 'Cabbage', dosage: '11', instructions: "A" },
+    //     { id: 2, medication: 'Garlic', dosage: "12", instructions: "A" },
+    //     { id: 3, medication: 'Apple', dosage: "13", instructions: "A" },
+    // ];
+
+    // const prescriptions = getMyPrescriptions();
+    // console.log("EEEEE!!!");
+    // let funny = await getMyPrescriptions();
+    // console.log(funny);
+    // console.log(getMyPrescriptions())
+    // console.log(getMyPrescriptions().then((value) => value));
+    // console.log(getMyPrescriptions().then((value) => value);
+
+    useEffect(() => {
+        getMyPrescriptions();
+    }, []); // Empty dependency array to run it only once on mount (ChatGPT)
 
     return (
         <>

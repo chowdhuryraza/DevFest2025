@@ -1,13 +1,10 @@
 import { useState } from "react";
 
-// const SignUpForm = ({ existingContact = {}, updateCallback }) => {
 const SignUpForm = ({ updateCallback }) => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [phone, setPhone] = useState();
     const [password, setPassword] = useState();
-
-    // const updating = Object.entries(existingContact).length !== 0
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -20,6 +17,7 @@ const SignUpForm = ({ updateCallback }) => {
         }
 
         const url = "http://127.0.0.1:5000/register"
+
         const options = {
             method: "POST",
             headers: {
@@ -27,6 +25,7 @@ const SignUpForm = ({ updateCallback }) => {
             },
             body: JSON.stringify(data)
         }
+
         const response = await fetch(url, options)
         if (response.status !== 201 && response.status !== 200) {
             const data = await response.json()

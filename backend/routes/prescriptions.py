@@ -68,4 +68,13 @@ def get_all_prescriptions():
   # if 'user' not in session:
   #   return jsonify({'message': 'please log in'}), 404
   prescriptions = list(prescription_tb.find({ }))
+  for i in range(len(prescriptions)):
+    print("HAHA  ------yjyjyj     ",prescriptions[i])
+    prescriptions[i]['_id'] = str(prescriptions[i]['_id'])
+
+    if 'recipient_id' in prescriptions[i]:
+      # print("THERE IS A recipient_id!!!!!!!!!!!")
+      prescriptions[i]['recipient_id'] = str(prescriptions[i]['recipient_id'])
+
+    print("HAHA  ------yjyjyjAFTER!!!     ",prescriptions[i])
   return jsonify(prescriptions), 200
