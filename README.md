@@ -8,8 +8,6 @@ Millions of elderly people and immigrants struggle with medication due to langua
 
 CareLingo bridges this gap by providing a smart, automated reminder system that ensures patients never miss their medication—all in their own language!
 
-</br>
-</br>
 
 <h2>Key Features</h2>
   - ✅ Guardian-Powered Reminders – Family members can register as guardians to schedule medication alerts for loved ones
@@ -17,8 +15,6 @@ CareLingo bridges this gap by providing a smart, automated reminder system that 
   - ✅ Multi-Language Support – Powered by Google Translate, our system speaks in the patient's native language
   - ✅ Custom Schedules – Uers can set reminders for specific hours and days based on each patient's needs
 
-</br>
-</br>
 
 <h2>Stack</h2>
   - Python Flask
