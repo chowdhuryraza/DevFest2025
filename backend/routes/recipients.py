@@ -25,6 +25,8 @@ def create_recipient():
   if 'user' not in session:
     return jsonify({'message': 'please log in'}), 404
   document = request.get_json() # frontend ensures all fields exist
+  document['guardian_id'] = session['user']['id']
+
   res = recipient_tb.insert_one(document)
   
   if not res.acknowledged:
@@ -81,6 +83,8 @@ def get_recipient(recipient_id):
     if not recipient:
         return jsonify({'message': 'Recipient not found'}), 404
     
+    recipient['_id'] = str(recipient['_id'])  # convert bson into json
+
     return jsonify(recipient), 200
 
 

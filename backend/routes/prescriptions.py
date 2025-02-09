@@ -16,7 +16,7 @@ client = MongoClient(connection_string, tlsCAFile=certifi.where())
 
 # connect with mongodb and set collection variables
 db = client["devfest"]
-prescription_tb = db["prescriptions"]
+prescription_tb = db["prescription"]
 recipient_tb = db["recipients"]
 
 @prescription_blueprint.route('/create', methods=['POST'])
@@ -24,7 +24,9 @@ def create_prescription():
   if 'user' not in session:
     return jsonify({'message': 'please log in'}), 404
   document = request.get_json() # frontend ensures all fields exist
-  recipient = recipient_tb.find_one({ "name": document["recipient_name"] })
+  print(document["recipient_id"])
+
+  recipient = recipient_tb.find_one({ "_id": ObjectId(document["recipient_id"]) })
   
   if not recipient:
     return jsonify({'message': 'Recipient not found'}), 404
@@ -63,7 +65,7 @@ def get_prescription(prescription_id):
 
 @prescription_blueprint.route('/all', methods=['GET'])
 def get_all_prescriptions():
-  if 'user' not in session:
-    return jsonify({'message': 'please log in'}), 404
+  # if 'user' not in session:
+  #   return jsonify({'message': 'please log in'}), 404
   prescriptions = list(prescription_tb.find({ }))
   return jsonify(prescriptions), 200

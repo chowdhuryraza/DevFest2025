@@ -97,4 +97,5 @@ def get_call_logs():
   return jsonify(call_logs), 200
 
 if __name__ == "__main__":
+  print("hello world")
   app.run(debug=True)
