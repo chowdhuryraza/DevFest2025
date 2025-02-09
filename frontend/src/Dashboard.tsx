@@ -100,7 +100,8 @@ function Dashboard() {
     }, []); // Empty dependency array to run it only once on mount (ChatGPT)
 
     const onUpdate = () => {
-        closeModal()
+        closeModal();
+        getMyPrescriptions();
         // fetchContacts()
     }
 
