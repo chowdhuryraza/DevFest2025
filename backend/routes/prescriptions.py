@@ -17,10 +17,7 @@ client = MongoClient(connection_string, tlsCAFile=certifi.where())
 # connect with mongodb and set collection variables
 db = client["devfest"]
 prescription_tb = db["prescriptions"]
-
-from recipients import recipient_tb
-
-from recipients import recipient_tb
+recipient_tb = db["recipients"]
 
 @prescription_blueprint.route('/create', methods=['POST'])
 def create_prescription():
