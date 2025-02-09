@@ -29,9 +29,8 @@
   "instructions": "",
   /* CAN make more epansive, monthly, daily, yearly presecriptions */
   "schedule": [
-    "days": {
-      "time": ""
-    }
+      { "day": "monday", "time": "02:30" },
+      { "day": "tuesday", "time": "05:30" }
   ]
   "status": { active, paused, done }
 }
