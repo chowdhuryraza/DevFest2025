@@ -10,10 +10,10 @@ const AddPrescription = ({ updateCallback }) => {
         e.preventDefault()
 
         const data = {
-            name,
-            email,
-            phone,
-            password
+            medication,
+            dosage,
+            day,
+            time
         }
 
         const url = "http://127.0.0.1:5000/prescriptions/create"
@@ -38,42 +38,51 @@ const AddPrescription = ({ updateCallback }) => {
     return (
         <form onSubmit={onSubmit}>
             <div>
-                <label htmlFor="name">Name: </label>
+                <label htmlFor="medication">Medication: </label>
                 <input
                     type="text"
-                    id="name"
+                    id="medication"
                     // value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
             </div>
             <div>
-                <label htmlFor="email">Email: </label>
+                <label htmlFor="dosage">Dosage: </label>
                 <input
                     type="text"
-                    id="email"
+                    id="dosage"
                     // value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
             <div>
-                <label htmlFor="phone">Phone: </label>
+                <label htmlFor="day">Day: </label>
                 <input
                     type="text"
-                    id="phone"
+                    id="day"
                     // value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                 />
             </div>
             <div>
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="time">Time: </label>
                 <input
-                    type="password"
-                    id="password"
+                    type="text"
+                    id="time"
+                    // value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="status">Status: </label>
+                <input
+                    type="text"
+                    id="status"
                     // value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <button type="submit">{"Create"}</button>
+            <button type="submit">{"Submit"}</button>
         </form>
     );
 };
